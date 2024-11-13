@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>النتائج</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>النتائج</h1>
+        <div>
+            {% if result %}
+                <div>{{ result | safe }}</div>
+            {% else %}
+                <p>لم يتم العثور على النتائج.</p>
+            {% endif %}
+        </div>
+        <a href="{{ url_for('index') }}">العودة إلى الصفحة الرئيسية</a>
+    </div>
+</body>
+</html>

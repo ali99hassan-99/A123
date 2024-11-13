@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الصفحة الرئيسية</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>مرحبًا بك في نظام الاشتراكات</h1>
+
+        <!-- استخدام Flexbox لعرض الأزرار عموديًا -->
+        <div class="buttons">
+            <a href="{{ url_for('subscriptions') }}" class="button">عرض الاشتراكات</a>
+            <a href="{{ url_for('expired_subscriptions') }}" class="button">الاشتراكات المنتهية</a>
+            <a href="{{ url_for('add_subscription') }}" class="button">إضافة اشتراك</a>
+            <a href="{{ url_for('delete_subscription') }}" class="button">حذف اشتراك</a>
+            <a href="{{ url_for('search_subscription') }}" class="button">البحث عن اشتراك</a>
+        </div>
+    </div>
+</body>
+</html>

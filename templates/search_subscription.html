@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>البحث عن اشتراك</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>البحث عن اشتراك</h1>
+        <form method="POST">
+            <label for="search_query">ابحث عن الاسم:</label>
+            <input type="text" name="search_query" id="search_query" placeholder="أدخل الاسم" value="{{ search_query }}">
+            <button type="submit" class="button">بحث</button>
+        </form>
+
+        {% if search_query %}
+            {% if subscriptions %}
+                <h2>النتائج:</h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>الاسم</th>
+                            <th>تاريخ الاشتراك</th>
+                            <th>تاريخ الانتهاء</th>
+                            <th>حالة الاشتراك</th>
+                            <th>رقم الهاتف</th>
+                            <th>نوع الاشتراك</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for subscription in subscriptions %}
+                        <tr>
+                            <td>{{ subscription['الاســــــم'] }}</td>
+                            <td>{{ subscription['تاريخ الاشتراك'] }}</td>
+                            <td>{{ subscription['تاريخ الانتهاء'] }}</td>
+                            <td>{{ subscription['حالة الاشتراك'] }}</td>
+                            <td>{{ subscription['رقم الهاتف'] }}</td>
+                            <td>{{ subscription['نوع الاشتراك'] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p>لا توجد اشتراكات تتطابق مع البحث!</p>
+            {% endif %}
+        {% endif %}
+
+        <a href="{{ url_for('home') }}" class="button">الرجوع إلى الصفحة الرئيسية</a>
+    </div>
+</body>
+</html>
